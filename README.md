@@ -25,3 +25,12 @@ fun WaterCounter(modifier: Modifier = Modifier) {
        }
    }
 }
+
+# Code ke 6 :
+Set tampilan Ui untuk kondisi tertentu
+if (count > 0) {
+            Text("You've had $count glasses.")
+        }
+set keadaan untuk di awal
+enabled = count < 10
+set keadaan 
