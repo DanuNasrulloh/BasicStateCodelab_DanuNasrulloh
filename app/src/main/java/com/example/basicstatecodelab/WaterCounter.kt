@@ -17,12 +17,6 @@ fun StatefulCounter(modifier: Modifier = Modifier) {
     var count by rememberSaveable { mutableStateOf(0) }
 
     StatelessCounter(count = count, onIncrement = {count++}, modifier = modifier)
-    AnotherStatelessMethod(count, { count *= 2 })
-}
-
-@Composable
-fun AnotherStatelessMethod(x0: Int, x1: () -> Unit) {
-    TODO("Not yet implemented")
 }
 
 @Composable
