@@ -33,4 +33,7 @@ if (count > 0) {
         }
 set keadaan untuk di awal
 enabled = count < 10
-set keadaan 
+set keadaan
+
+#Code ke 8 agar saat rotasi data tetap terjaga menggunakan code :
+rememberSaveable { mutableStateOf(0) }
