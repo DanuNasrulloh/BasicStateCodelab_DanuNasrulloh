@@ -8,24 +8,34 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 
+@Composable
+fun StatefulCounter(modifier: Modifier = Modifier) {
+    var count by rememberSaveable { mutableStateOf(0) }
 
+    StatelessCounter(count = count, onIncrement = {count++}, modifier = modifier)
+    AnotherStatelessMethod(count, { count *= 2 })
+}
 
 @Composable
-fun WaterCounter(modifier: Modifier = Modifier) {
+fun AnotherStatelessMethod(x0: Int, x1: () -> Unit) {
+    TODO("Not yet implemented")
+}
+
+@Composable
+private fun StatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = Modifier) {
+
     Column(modifier = modifier.padding(16.dp)) {
-        var count by rememberSaveable { mutableStateOf(0) }
 
         if (count > 0) {
             Text("You've had $count glasses.")
         }
 
         Button(
-            onClick = { count++ },
+            onClick = onIncrement,
             Modifier.padding(top = 8.dp),
             enabled = count < 10
         ) {
