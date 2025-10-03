@@ -1,4 +1,6 @@
 Code program
+
+https://github.com/user-attachments/assets/431b287a-b2e2-4254-955c-31cd1bbc15eb
 ```
 # Code ke 4 : 
 fun WaterCounter(modifier: Modifier = Modifier) {
@@ -100,4 +102,44 @@ fun WellnessTasksList(
 
 fun getWellnessTasks() = List(30) { i -> WellnessTask(i, "Task # $i") }
 
-3. data class WellnessTask(val id: Int, val label: String) 
+3. data class WellnessTask(val id: Int, val label: String)
+
+
+# Code 11 Observase MutableList
+@Composable
+fun WellnessTasksList(
+   list: List<WellnessTask>,
+   onCloseTask: (WellnessTask) -> Unit,
+   modifier: Modifier = Modifier
+) {
+   LazyColumn(modifier = modifier) {
+       items(
+           items = list,
+           key = { task -> task.id }
+       ) { task ->
+           WellnessTaskItem(taskName = task.label, onClose = { onCloseTask(task) })
+       }
+   }
+}
+
+@Composable
+fun WellnessTaskItem(
+   taskName: String, onClose: () -> Unit, modifier: Modifier = Modifier
+) {
+   var checkedState by rememberSaveable { mutableStateOf(false) }
+
+   WellnessTaskItem(
+       taskName = taskName,
+       checked = checkedState,
+       onCheckedChange = { newValue -> checkedState = newValue },
+       onClose = onClose,
+       modifier = modifier,
+   )
+}
+
+#Code 12 State In ViewModel
+
+
+
+
+
